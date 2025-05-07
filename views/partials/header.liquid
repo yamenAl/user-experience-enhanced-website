@@ -26,16 +26,16 @@
   <nav class="menu">
     <ul class="nav-list">
       {% for exercise in tasks %}{% if exercise.id %}
-        <li>
-          <a 
-            class="nav-links border-black them-{{ exercise.theme }}"
-            href="/{{ exercise.id }}" 
-            data-title="{{ exercise.title }}"
-          >
-            <img src="/assets/photos/rouwtaak-{{ exercise.theme }}.svg" alt="{{ exercise.title }} icon">
-            <p>{{ exercise.title }}</p>
-          </a>
-        </li>
+          <li>
+            <a 
+              class="nav-links border-black them-{{ exercise.theme }}"
+              href="/{{ exercise.id }}" 
+              data-title="{{ exercise.title }}"
+            >
+              <img src="/assets/photos/rouwtaak-{{ exercise.theme }}.svg" alt="{{ exercise.title }} icon">
+              <p>{{ exercise.title }}</p>
+            </a>
+          </li>
         {% endif %}{% endfor %}
     </ul>
   </nav>    
