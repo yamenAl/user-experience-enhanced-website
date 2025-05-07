@@ -1,0 +1,43 @@
+<header>
+
+  <article class="inline">
+    <ul class="inline">
+      <li>
+        <section>
+          {% for title in tasks %} {% if title.id == taskObject.id %}
+              <h1 >{{ title.title }}</h1>
+            {% endif %}{% endfor %}
+        </section>
+      </li>
+      <li>
+        <a class="menu-toggle"><svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.002 1L5.50097 5.50098L0.999994 1" stroke="#A6A6A6" stroke-width="1.00189" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </a>
+      </li>
+    </ul>
+  </article>
+
+  <article class="progress-container inline">
+    <progress value="10" max="100"></progress>
+    <p>10% volbracht</p>
+  </article>
+  
+  <nav class="menu">
+    <ul class="nav-list">
+      {% for exercise in tasks %}{% if exercise.id %}
+        <li>
+          <a 
+            class="nav-links border-black them-{{ exercise.theme }}"
+            href="/{{ exercise.id }}" 
+            data-title="{{ exercise.title }}"
+          >
+            <img src="/assets/photos/rouwtaak-{{ exercise.theme }}.svg" alt="{{ exercise.title }} icon">
+            <p>{{ exercise.title }}</p>
+          </a>
+        </li>
+        {% endif %}{% endfor %}
+    </ul>
+  </nav>    
+ 
+</header>
