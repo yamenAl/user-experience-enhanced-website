@@ -1,0 +1,74 @@
+{% render 'partials/head.liquid' %}
+<main>
+    <section>
+        {% for message in specificexercise %}
+        <article class="notficatie">
+            <p class="them-{{ message.task.id }}">Laat een bericht achter :* !</p>
+        </article>
+        <section>
+            <a href="/exercise/{{ message.id }}" class="back-link">
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <title>Go back</title>
+                    <path
+                        d="M0.561884 4.55426C0.315712 4.79623 0.3123 5.19194 0.554265 5.43812L4.49731 9.44973C4.73927 9.6959 5.13498 9.69931 5.38116 9.45735C5.62733 9.21539 5.63074 8.81967 5.38878 8.5735L1.88385 5.00762L5.44973 1.50269C5.6959 1.26073 5.69931 0.865016 5.45735 0.618844C5.21539 0.372671 4.81967 0.36926 4.5735 0.611224L0.561884 4.55426ZM15.0755 5.74636C15.4207 5.74934 15.7029 5.47194 15.7059 5.12678C15.7089 4.78161 15.4315 4.49939 15.0863 4.49641L15.0755 5.74636ZM0.994612 5.62498L15.0755 5.74636L15.0863 4.49641L1.00539 4.37502L0.994612 5.62498Z"
+                        fill="#F5F5F5"
+                    />
+                </svg>
+                <h1>Community Drops</h1>
+            </a>
+            <p>Deel wat je van de oefening vond, lees ervaringen van anderen en steun elkaar in de reis door rouw. <strong>Je bent niet alleen.</strong></p>
+        </section>
+        <article>
+            <h2>Nieuwste berichten</h2>
+        </article>
+
+        {% endfor %} {% for message in messagesFilter %}
+        <article class="rouwtaak-card">
+            <ul>
+                <li>
+                    <div class="cont-ball">
+                        {% for item in specificexercise %}
+                        <span class="them-{{ item.task.id }} ball"></span>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li>
+                    <h3>{{ message.from }}</h3>
+                </li>
+            </ul>
+
+            <p>Op {{ message.date_created | date: "%-d %B" }}</p>
+            <p class="">
+                {{ message.text }}
+            </p>
+            <form method="POST" action="/messages/{{ message.exercise }}">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="hidden" name="messageId" value="{{ message.id }}" />
+                <button class="btn-standard" type="submit" onclick="return confirm('Weet je zeker dat je dit bericht wilt verwijderen?');">Verwijder bericht</button>
+            </form>
+        </article>
+
+        {% endfor %} {% for message in specificexercise %}
+        <a class="them-{{ message.task.id }} btn-standard form-btn start" data-target="form-{{ message.id }}" onclick="toggleActive()">Plaats bericht</a>
+
+        <article id="form-{{ message.id }}" class="form-container" style="display: none;">
+            <form method="POST" action="/messages/{{ message.id }}">
+                <input type="hidden" name="exercise" value="{{ message.id }}" />
+                <article>
+                    <label>Naam</label>
+                    <input type="text" name="from" placeholder="name" required />
+                </article>
+
+                <textarea name="text" placeholder="Deel met anderen wat er in je hoofd omgaat." required></textarea>
+                <article class="inline">
+                    <a class="them-{{ message.task.id }} start-btn-black btn-standard btn-msg" href="/messages/{{ message.id }}">Misschien later</a><br />
+                    <button class="them-{{ message.task.id }} btn-standard" type="submit">Plaats bericht</button>
+                </article>
+            </form>
+        </article>
+        {% endfor %} {% render 'partials/foot.liquid' %}
+    </section>
+</main>
+
+
+{% render 'partials/foot.liquid' %}

@@ -1,0 +1,54 @@
+{% render 'partials/head.liquid' %}
+<main class="main-class">
+  <article class="photo-cont">
+  {% for exercise in specificExercise %}
+  
+    <a href="/{{ exercise.task.id }}" class="close-button">        
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>close</title>
+        <path d="M13.5561 1L1 13.5561" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        <path d="M13.5561 1L1 13.5561" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        <path d="M13.5561 1L1 13.5561" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        <path d="M1.44382 1.44385L13.9999 14" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        <path d="M1.44382 1.44385L13.9999 14" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        <path d="M1.44382 1.44385L13.9999 14" stroke="#111111" stroke-width="1.25" stroke-linecap="round"/>
+        </svg>
+        
+    </a>  
+
+    <img src="https://fdnd-agency.directus.app/assets/{{ exercise.image.id }}" width="{{ foto.width }}" height="{{ foto.height }}" alt="{{ exercise.title }} foto" class="view-image">
+  
+  {% endfor %}
+</article>
+
+    <article class="rouwtaak-card ">
+       
+        {% for exercise in specificExercise %}
+          <article>
+            <ul class="inline">
+                <li class="inline"><p>{{ exercise.type }}</p>|</li>
+                <li class="inline">
+                    <img src="/assets/icons/time.svg" alt="time icon">
+                    <p>{{ exercise.duration }} min</p>
+                </li>
+                <li class="inline">
+                    <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                    <p>{{  countMessages }} community drops</p> 
+                </li>
+            </ul>
+        </article>
+            <section>
+              <h1>{{ exercise.title }}</h1>
+              <p>{{ exercise.description }}</p>
+            </section>
+          {% endfor %}
+          {% for messageId in specificExercise %}
+            <a class="them-{{ messageId.task.id }} btn-standard" href="/community-drops/{{ messageId.id }}">Start</a>
+
+          {% endfor %}
+    </article>
+    
+</main>
+{% render 'partials/footer.liquid' %}
+{% render 'partials/foot.liquid' %}
+

@@ -1,0 +1,51 @@
+{% render 'partials/head.liquid' %}
+{% include 'partials/header.liquid' %} 
+
+<main>
+    <article class="top-views">
+            {% if taskObject %}
+                <img class="task-img"  src="/assets/photos/rouwtaak-{{ taskObject.theme }}.svg" alt="icon for task {{ taskObject.title }}">
+            {% endif %}
+            <h1>Rouwstappen van de dag</h1>
+            <p>3 oefeningen open vandaag</p>
+    </article>
+
+    <article class="exercises-cont">
+        {% for exercise in exercises %}
+            {% if taskObject.exercise contains exercise.id %}
+                <ul class="rouwtaak-card hover-effect">
+                    <li class="img-container">
+                    <a href="/exercise/{{ exercise.id }}">
+                    <img src="https://fdnd-agency.directus.app/assets/{{ exercise.image }}" idth="{{ foto.width }}" height="{{ foto.height }}" alt="{{ exercise.title }} img">
+                    <a class="them-{{ taskObject.theme }} start-btn" href="/exercise/{{ exercise.id }}">Start oefening</a>
+                    </li>                   
+                    <p>{{ exercise.type }}</p>
+                    <h3>{{ exercise.title }}</h3>
+                    </li>
+                    <li class="inline">
+                        <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                        <a href="/messages/{{ exercise.id }}">
+                        {% if exercise.messages %}
+                            <p> {{ exercise.messages | size }} community drops</p>
+                          {% else %}
+                            <p>0 community drops</p>
+                          {% endif %}
+                        </a>
+                    </li>
+                    
+                    <li class="inline">     
+                        <img src="/assets/icons/time.svg" alt="time icon">
+                        <P>{{ exercise.duration }} min</P>
+                    </li>
+                    <li class="inline">     
+                        <img src="/assets/icons/time.svg" alt="tips icon">
+                        <P>3 tips</P>
+                    </li>    
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </article>
+</main>
+
+{% render 'partials/footer.liquid' %}
+{% render 'partials/foot.liquid' %}
