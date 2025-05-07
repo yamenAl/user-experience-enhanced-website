@@ -19,7 +19,6 @@ header ul.inline {
   margin: 0;
 }
 
-  
   .menu-toggle {
     background-color: var(--blue);
     padding: 0.5em 1.2em;
@@ -74,14 +73,13 @@ header ul.inline {
     align-items: center;
     gap: 1rem;
   }
-  
+
 
   .menu li a {
     align-items: center;
     justify-content: center;
     padding: 0.5em;
     text-align: center;
-
     padding: 0.5em 1em;
     border-radius: 6px;
     text-decoration: none;
