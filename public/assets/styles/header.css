@@ -1,7 +1,7 @@
 
 header {
-  display: flex; /* use flex instead of grid for horizontal layout */
-  flex-direction: column; /* keep items stacking vertically */
+  display: flex; 
+  flex-direction: column; 
   background-color: var(--background-color);
   border-bottom: var(--border);
   padding: 20px;
@@ -11,7 +11,7 @@ header {
 
 header ul.inline {
   display: flex;
-  justify-content: space-between; /* push title to left, toggle to right */
+  justify-content: space-between; 
   align-items: center;
   width: 100%;
   list-style: none;
