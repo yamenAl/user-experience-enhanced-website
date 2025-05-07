@@ -104,7 +104,7 @@
     }
   }
   
-  .them-4, .them-purple {
+  .them-4, .them-pink {
     background-color: var(--color-rouwtaak4);
     border: 1px solid var(--color-rouwtaak4);
 
@@ -112,7 +112,7 @@
       background-color: var(--color-rouwtaak1);
     }
   }
-  .them-1,.them-2,.them-3,.them-4,.them-blue, .them-red, .them-green, .them-purple{
+  .them-1,.them-2,.them-3,.them-4,.them-blue, .them-red, .them-green, .them-pink{
       color: var(--color-white);
   }
   .start-btn-black{
