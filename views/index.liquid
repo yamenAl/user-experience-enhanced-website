@@ -4,8 +4,8 @@
 <main>
     {% if taskObject %}
     <article class="top-views theme-{{ taskObject.theme }}">
-                <img class="task-img"  src="/assets/photos/rouwtaak-{{ taskObject.theme }}.svg" height="200" width="200" alt="icon for task {{ taskObject.title }}">
-            {% endif %}
+        <img class="task-img"  src="/assets/photos/rouwtaak-{{ taskObject.theme }}.svg" height="200" width="200" alt="icon for task {{ taskObject.title }}">
+     {% endif %}
             <h1>Rouwstappen van de dag</h1>
             <p>3 oefeningen open vandaag</p>
     </article>
@@ -16,10 +16,11 @@
                 <ul class="rouwtaak-card hover-effect ">
                     <li class="img-container">
                     <a href="/exercise/{{ exercise.id }}">
-                    <picture>
-                    <source srcset="https://fdnd-agency.directus.app/assets/{{ exercise.image }}" media="(min-width: 200px)" />
                     <img src="https://fdnd-agency.directus.app/assets/{{ exercise.image }}" height="200" width="200" alt="{{ exercise.title }} img">
-                    </picture>
+                    <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/{{ exercise.image }}" media="(min-width: 200px)" />
+                        <img src="https://fdnd-agency.directus.app/assets/{{ exercise.image }}" alt="{{ exercise.title }} img">
+                      </picture>
                     <a class="them-{{ taskObject.theme }} start-btn" href="/exercise/{{ exercise.id }}">Start oefening</a>
                     </li>                   
                     <p>{{ exercise.type }}</p>
