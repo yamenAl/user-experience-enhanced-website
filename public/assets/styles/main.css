@@ -54,7 +54,6 @@ main {
 
   
   .rouwtaak-card {
-   /* flex:1; /*check this */
     display: grid;
     background-color: var(--secondary-color);
     border: 0.25em solid var(--secondary-color);
@@ -77,12 +76,13 @@ main {
   }
     
   .rouwtaak-card ul{
-    display: flex;
     gap: 1em; 
     border: 2em;
     list-style: none;
     
   }
+
+
  
 
   .img-container {
@@ -112,9 +112,48 @@ main {
       text-decoration: none;
     }
   }
-  
+  .exercise-card{
+    display: grid;
+    border-radius: 1rem;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 3em;
+    padding: 1rem;
+    ul{
+      gap: 1em; 
+      border: 2em;
+      list-style: none;
+      
+    } 
+  }
+  .center-button {
+    display: block; 
+    min-width: 20px;         
+    margin: 0 auto;         
+    text-align: center;       
+  }
 
-/*new add it*/
+  .custom-progress {
+    width: calc(100% - 4rem); /* or fixed like 90% */
+    height: 5px;
+    margin: 0; 
+    border: none;
+  }
+  
+  .custom-progress::-webkit-progress-bar {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+  }
+  
+  .custom-progress::-webkit-progress-value {
+    background-color: var(--color-white);
+  }
+  
+  /*Fierfox*/
+  .custom-progress::-moz-progress-bar {
+    background-color: var(--secondary-color);
+  }
+
   .cont-ball {
     display: flex;
     gap: 0.25rem;
@@ -245,14 +284,14 @@ main {
         margin-right: .5rem;
     }  
 }*/
-
+/*
 @supports (display: grid) {
   input[type="checkbox"] {
     appearance: none;
     position: absolute;
   }
 }
-
+*/
   /*error page*/
   .error-page {
     display: flex;
