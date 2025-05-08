@@ -24,7 +24,7 @@
 
         {% endfor %} {% for message in messagesFilter %}
         <article class="rouwtaak-card">
-            <ul>
+            <ul class="inline">
                 <li>
                     <div class="cont-ball">
                         {% for item in specificexercise %}
@@ -52,20 +52,17 @@
         <a class="them-{{ message.task.id }} btn-standard form-btn start" data-target="form-{{ message.id }}" onclick="toggleActive()">Plaats bericht</a>
 
         <article id="form-{{ message.id }}" class="form-container" style="display: none;">
-            <form method="POST" action="/messages/{{ message.id }}">
-                <input type="hidden" name="exercise" value="{{ message.id }}" />
-                <article>
-                    <label>Naam</label>
-                    <input type="text" name="from" placeholder="name" required />
-                </article>
-
-                <textarea name="text" placeholder="Deel met anderen wat er in je hoofd omgaat." required></textarea>
-                <article class="inline">
-                    <a class="them-{{ message.task.id }} start-btn-black btn-standard btn-msg" href="/messages/{{ message.id }}">Misschien later</a><br />
-                    <button class="them-{{ message.task.id }} btn-standard" type="submit">Plaats bericht</button>
-                </article>
-            </form>
-        </article>
+          <form id="post-form-{{ message.id }}" method="POST" action="/messages/{{ message.id }}">
+              <input type="hidden" name="exercise" value="{{ message.id }}" />
+              <textarea name="text" placeholder="Deel met anderen wat er in je hoofd omgaat." required></textarea>
+              <div class="loading-state hide">Bezig met plaatsen...</div>
+              <div class="them-{{ message.task.id }} success-message hide">Bericht succesvol geplaatst!</div>
+              <article class="inline">
+                  <a class="them-{{ message.task.id }} start-btn-black btn-standard btn-msg" href="/messages/{{ message.id }}">Misschien later</a><br />
+                  <button class="them-{{ message.task.id }} btn-standard post-btn" type="submit" data-id="{{ message.id }}">Plaats bericht</button>
+              </article>
+          </form>
+      </article>
         {% endfor %} {% render 'partials/foot.liquid' %}
     </section>
 </main>

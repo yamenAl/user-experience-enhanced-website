@@ -1,8 +1,8 @@
 main {
     display: grid;
     grid-template-rows: auto;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 1rem;
+    padding: 1rem;
   }
   .main-class {
     margin: 0;
@@ -16,7 +16,7 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.75rem;
+    gap: 1rem;
   }
   
   .main-rouwtaak-icon {
@@ -55,14 +55,17 @@ main {
   
   .rouwtaak-card {
     display: grid;
-    background-color: var(--secondary-color);
-    border: 0.25em solid var(--secondary-color);
+    background-color: var(--background-color);
+    border: solid var(--secondary-color);
     border-radius: 1rem;
     gap: 0.75rem;
     width: 100%;
     max-width: 100%;
     margin-bottom: 3em;
-    padding: 1rem;
+    border-radius: 1rem;
+    img{
+      border-radius: 1rem 1rem 0 0;
+    }
   }
     .hover-effect{
       transition: transform 0.3s ease-in-out;
@@ -141,7 +144,7 @@ main {
   }
   
   .custom-progress::-webkit-progress-bar {
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
     border-radius: 10px;
   }
   
@@ -151,7 +154,7 @@ main {
   
   /*Fierfox*/
   .custom-progress::-moz-progress-bar {
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
   }
 
   .cont-ball {
@@ -169,6 +172,10 @@ main {
     display: grid;
     justify-content: center; 
     align-items:center;
+    text-align: center;
+    background-image:
+    radial-gradient(circle at -31em 50%, var(--main-color), transparent 40em),   
+    radial-gradient(circle at calc(100% + 30em)  50%, var(--main-color), transparent 40em)
 
   }
 
@@ -339,4 +346,26 @@ main {
         opacity: 0;
         transform: translateY(-50px);
     }
+}
+.success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem 2rem;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0;
+
+  &.show {
+      opacity: 1;
+  }
+  &.fade-out {
+      display: none;
+      opacity: 0;
+  }
 }
