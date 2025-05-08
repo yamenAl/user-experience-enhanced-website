@@ -136,7 +136,6 @@ app.post('/messages/:id', async function (request, response) {
   }
 });
 
-
 //messages page delete
 app.post('/messages/', async function (request, response) {
   try {
@@ -210,6 +209,11 @@ app.post('/community-drops/:id', async function (request, response) {
 });
 
 
+app.set('port', process.env.PORT || 8000)
+
+app.listen(app.get('port'), function () {
+  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ Drop & Heal website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
+}) 
 
 
 //error page
