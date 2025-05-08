@@ -1,10 +1,4 @@
-console.log('Hier komt je server voor Sprint 10.')
 
-console.log('Gebruik uit Sprint 9 alleen de code die je mee wilt nemen.')
-
-console.log('Zet \'m op!')
-// Importeer het npm package Express
-// Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
 import express from 'express'
 
 
@@ -14,7 +8,6 @@ const apiTasks = "https://fdnd-agency.directus.app/items/dropandheal_task";
 const apiExercises = "https://fdnd-agency.directus.app/items/dropandheal_exercise";
 const apiMessages = "https://fdnd-agency.directus.app/items/dropandheal_messages";
 
-// Doe een fetch naar de data die je nodig hebt
 const tasksResponse = await fetch(apiTasks);
 const exercisesResponse = await fetch(apiExercises);
 const messagesResponse = await fetch(apiMessages);
@@ -23,26 +16,21 @@ const tasksData = await tasksResponse.json();
 const exercisesData = await exercisesResponse.json();
 const messagesData = await messagesResponse.json();
 
-// Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
-// Maak werken met data uit formulieren iets prettiger
 app.use(express.urlencoded({extended: true}))
 
-// Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
-// Bestanden in deze map kunnen dus door de browser gebruikt worden
 app.use(express.static('public'))
 
-// Stel Liquid in als 'view engine'
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 
-// Stel de map met Liquid templates in
-// Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
+
 app.set('views', './views')
 
 
 
+//index page post
 app.get('/:id', async function (request, response) {
   try {
     const taskId = request.params.id;
@@ -73,7 +61,7 @@ app.get('/:id', async function (request, response) {
 
 
 
-
+//exercise page post
 app.get('/exercise/:id', async function (request, response) {
   try {
     const exerciseId = request.params.id;
@@ -98,9 +86,7 @@ app.get('/exercise/:id', async function (request, response) {
 });
 
 
-
-
-
+//messages page 
 app.get('/messages/:id', async function (request, response) {
   try {
     const messagesId = request.params.id;
@@ -127,6 +113,8 @@ app.get('/messages/:id', async function (request, response) {
   }
 });
 
+
+//messages page post
 app.post('/messages/:id', async function (request, response) {
   try {
     const messagesId = request.params.id;
@@ -134,7 +122,7 @@ app.post('/messages/:id', async function (request, response) {
     await fetch('https://fdnd-agency.directus.app/items/dropandheal_messages', {
       method: 'POST',
       body: JSON.stringify({
-        from: request.body.from,
+        from: "Anoniem",
         exercise: request.body.exercise,
         text: request.body.text
       }),
@@ -148,6 +136,8 @@ app.post('/messages/:id', async function (request, response) {
   }
 });
 
+
+//messages page delete
 app.post('/messages/', async function (request, response) {
   try {
     const messagesId = request.params.id;
@@ -176,6 +166,7 @@ app.post('/messages/', async function (request, response) {
   }
 });
 
+//comunity-drops page post
 app.get('/community-drops/:id', async function (request, response) {
   try {
     const exerciseId = request.params.id;
@@ -197,6 +188,8 @@ app.get('/community-drops/:id', async function (request, response) {
   }
 });
 
+
+//comunity-drops page post
 app.post('/community-drops/:id', async function (request, response) {
   try {
     const exerciseId = request.params.id;
@@ -216,40 +209,10 @@ app.post('/community-drops/:id', async function (request, response) {
   }
 });
 
-app.post('/community-drops', async function (request, response) {
-  try {
-    const { _method, messageId, from, text, exercise } = request.body;
 
-    if (_method === 'DELETE') {
-      if (messageId) {
-        await fetch(`https://fdnd-agency.directus.app/items/dropandheal_messages/${messageId}`, {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json;charset=UTF-8' }
-        });
-      }
-      return response.redirect(303, '/community-drops');
-    }
 
-    await fetch('https://fdnd-agency.directus.app/items/dropandheal_messages', {
-      method: 'POST',
-      body: JSON.stringify({ from, text, exercise }),
-      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
-    });
-
-    response.redirect(303, '/community-drops');
-  } catch (error) {
-    console.error("Something Wrong in the community drops page in detele drops, check this:",error);
-    response.status(500).render("error.liquid");
-  }
-});
-app.set('port', process.env.PORT || 8000)
-
-app.listen(app.get('port'), function () {
-  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ Drop & Heal website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
-}) 
 
 //error page
 app.use((req, res, next) => {
   res.status(404).render("error.liquid")
 })
-  //https://fdnd-agency.directus.app/items/dropandheal_messages?limit=-1  this for check msg keep in mind

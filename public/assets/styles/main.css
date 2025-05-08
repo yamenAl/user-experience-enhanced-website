@@ -134,7 +134,7 @@ main {
   }
 
   .custom-progress {
-    width: calc(100% - 4rem); /* or fixed like 90% */
+    width: calc(100% - 1rem); 
     height: 5px;
     margin: 0; 
     border: none;
