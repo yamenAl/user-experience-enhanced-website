@@ -46,6 +46,13 @@
                 <input type="hidden" name="messageId" value="{{ message.id }}" />
                 <button class="btn-standard" type="submit" onclick="return confirm('Weet je zeker dat je dit bericht wilt verwijderen?');">Verwijder bericht</button>
             </form>
+            <form method="post" class="like-form" data-id="{{ message.id }}">
+            {% if likedPersons[message.id] %}
+                <button type="submit" class="like-button liked">Unlike 💔</button>
+            {% else %}
+                <button type="submit" class="like-button">Like ❤️</button>
+            {% endif %}
+            </form>
         </article>
 
         {% endfor %} {% for message in specificexercise %}
@@ -58,8 +65,9 @@
               <div class="loading-state hide">Bezig met plaatsen...</div>
               <div class="them-{{ message.task.id }} success-message hide">Bericht succesvol geplaatst!</div>
               <article class="inline">
-                  <a class="them-{{ message.task.id }} start-btn-black btn-standard btn-msg" href="/messages/{{ message.id }}">Misschien later</a><br />
+                  <a class="them-{{ message.task.id }} start-btn-black btn-standard btn-msg" href="/messages/{{ message.id }}">Misschien later</a><br/>
                   <button class="them-{{ message.task.id }} btn-standard post-btn" type="submit" data-id="{{ message.id }}">Plaats bericht</button>
+
               </article>
           </form>
       </article>
