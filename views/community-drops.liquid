@@ -1,105 +1,99 @@
 {% render 'partials/head.liquid' %}
 <main>
-    {% for message in specificexercise %}
-    <article class="notficatie">
-        <p class="them-{{ message.task.id }}">Laat een Drop achter :) !</p>
-    </article>
-    <section>
-        <a href="/exercise/{{ message.id }}" class="back-link">
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <title>Go back</title>
-                <path
-                    d="M0.561884 4.55426C0.315712 4.79623 0.3123 5.19194 0.554265 5.43812L4.49731 9.44973C4.73927 9.6959 5.13498 9.69931 5.38116 9.45735C5.62733 9.21539 5.63074 8.81967 5.38878 8.5735L1.88385 5.00762L5.44973 1.50269C5.6959 1.26073 5.69931 0.865016 5.45735 0.618844C5.21539 0.372671 4.81967 0.36926 4.5735 0.611224L0.561884 4.55426ZM15.0755 5.74636C15.4207 5.74934 15.7029 5.47194 15.7059 5.12678C15.7089 4.78161 15.4315 4.49939 15.0863 4.49641L15.0755 5.74636ZM0.994612 5.62498L15.0755 5.74636L15.0863 4.49641L1.00539 4.37502L0.994612 5.62498Z"
-                    fill="#F5F5F5"
-                />
-            </svg>
 
-            <h1>{{ message.title }}</h1>
-        </a>
+
+
+  {% for message in specificexercise %}
+    <article class="notficatie">
+    <p class="them-{{ message.task.id }}">Laat een Drop achter :) ! </p>
+    </article >
+    <section>
+      <a href="/exercise/{{ message.id }}" class="back-link">
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Go back</title>
+          <path d="M0.561884 4.55426C0.315712 4.79623 0.3123 5.19194 0.554265 5.43812L4.49731 9.44973C4.73927 9.6959 5.13498 9.69931 5.38116 9.45735C5.62733 9.21539 5.63074 8.81967 5.38878 8.5735L1.88385 5.00762L5.44973 1.50269C5.6959 1.26073 5.69931 0.865016 5.45735 0.618844C5.21539 0.372671 4.81967 0.36926 4.5735 0.611224L0.561884 4.55426ZM15.0755 5.74636C15.4207 5.74934 15.7029 5.47194 15.7059 5.12678C15.7089 4.78161 15.4315 4.49939 15.0863 4.49641L15.0755 5.74636ZM0.994612 5.62498L15.0755 5.74636L15.0863 4.49641L1.00539 4.37502L0.994612 5.62498Z" fill="#F5F5F5"/>
+          </svg>
+
+        <h1>{{ message.title }}</h1>
+      </a>
     </section>
 
+      <article >
+          <ul class="inline">
+              <li class="inline"><p>{{ message.type }}</p>|</li>
+              <li class="inline">
+                  <img src="/assets/icons/time.svg" alt="time icon">
+                  <p>{{ message.duration }} min</p>
+              </li>
+              <li class="inline">
+                  <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                  <p>{{  countMessages }}  community drops</p> 
+              </li>
+          </ul>
+      </article>
     <article>
-        <ul class="inline">
-            <li class="inline">
-                <p>{{ message.type }}</p>
-                |
-            </li>
-            <li class="inline">
-                <img src="/assets/icons/time.svg" alt="time icon" />
-                <p>{{ message.duration }} min</p>
-            </li>
-            <li class="inline">
-                <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon" />
-                <p>{{ countMessages }} community drops</p>
-            </li>
-        </ul>
-    </article>
-    <article>
-        <p>
-            In onderstaand veld kan je beginnen met schrijven. Je hoeft het niet in een keer af te schrijven, je kan het altijd op als concept op slaan en op een later moment aanvullen in
-            <strong class="inline">
-                <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M4.7402 0.779937L4.73995 0.780216C4.26413 1.30368 3.24849 2.47208 2.3488 3.85062C1.46424 5.20597 0.626343 6.86072 0.626343 8.33542C0.626343 9.67842 1.07888 10.8182 1.93143 11.6201C2.78058 12.4189 3.97631 12.8354 5.37897 12.8354C6.78164 12.8354 7.97737 12.4189 8.82652 11.6201C9.67907 10.8182 10.1316 9.67842 10.1316 8.33542C10.1316 6.86073 9.2937 5.20598 8.40919 3.85063C7.50954 2.4721 6.49398 1.30369 6.01835 0.780274L6.01804 0.779936C5.93587 0.689666 5.83581 0.619249 5.72592 0.57168L5.52738 1.03032L5.72592 0.57168C5.61609 0.524136 5.49788 0.5 5.37912 0.5C5.26036 0.5 5.14215 0.524136 5.03232 0.57168C4.92244 0.619248 4.82238 0.689665 4.7402 0.779937ZM5.10994 1.11653C5.14321 1.07998 5.18449 1.05065 5.23096 1.03053C5.27742 1.01042 5.32797 1 5.37912 1C5.43027 1 5.48082 1.01042 5.52729 1.03053C5.57375 1.05065 5.61504 1.07998 5.64831 1.11653H5.10994Z"
-                        stroke="#F5F5F5"
-                        stroke-miterlimit="10"
-                    />
-                    <path d="M7.7585 8.68823C7.7585 9.21906 7.53431 9.72814 7.13525 10.1035C6.7362 10.4788 6.19496 10.6897 5.63062 10.6897" stroke="#F5F5F5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Drops
-            </strong>
-        </p>
+      <p>
+        In onderstaand veld kan je beginnen met schrijven. Je hoeft het niet in een keer af te schrijven, je kan het altijd op als concept op slaan en op een later moment aanvullen in 
+        <strong class="inline"><svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.7402 0.779937L4.73995 0.780216C4.26413 1.30368 3.24849 2.47208 2.3488 3.85062C1.46424 5.20597 0.626343 6.86072 0.626343 8.33542C0.626343 9.67842 1.07888 10.8182 1.93143 11.6201C2.78058 12.4189 3.97631 12.8354 5.37897 12.8354C6.78164 12.8354 7.97737 12.4189 8.82652 11.6201C9.67907 10.8182 10.1316 9.67842 10.1316 8.33542C10.1316 6.86073 9.2937 5.20598 8.40919 3.85063C7.50954 2.4721 6.49398 1.30369 6.01835 0.780274L6.01804 0.779936C5.93587 0.689666 5.83581 0.619249 5.72592 0.57168L5.52738 1.03032L5.72592 0.57168C5.61609 0.524136 5.49788 0.5 5.37912 0.5C5.26036 0.5 5.14215 0.524136 5.03232 0.57168C4.92244 0.619248 4.82238 0.689665 4.7402 0.779937ZM5.10994 1.11653C5.14321 1.07998 5.18449 1.05065 5.23096 1.03053C5.27742 1.01042 5.32797 1 5.37912 1C5.43027 1 5.48082 1.01042 5.52729 1.03053C5.57375 1.05065 5.61504 1.07998 5.64831 1.11653H5.10994Z" stroke="#F5F5F5" stroke-miterlimit="10"/>
+        <path d="M7.7585 8.68823C7.7585 9.21906 7.53431 9.72814 7.13525 10.1035C6.7362 10.4788 6.19496 10.6897 5.63062 10.6897" stroke="#F5F5F5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>Drops</strong>
+      </p>
     </article>
     {% endfor %}
     <textarea name="text" id="dropTextarea" placeholder="Laat een community drop achter en verspreid kracht." required></textarea>
     {% for message in specificexercise %}
 
+     
     <section class="bottom-popup" id="messagePopup">
-        <div class="popup-header">
-            <a href="/community-drops/{{ message.task.id }}" class="close-button btn-close-community">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
-                    <title>close</title>
-                    <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z" />
-                </svg>
-            </a>
-        </div>
+      <div class="popup-header">
 
-        <h3>
-            Toegevoegd aan
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8 7.33542C8 9.79014 6.45472 11.3354 4 11.3354C1.54528 11.3354 0 9.79014 0 7.33542C0 4.70125 2.8675 1.14514 3.74694 0.11653C3.77824 0.0799843 3.81707 0.050646 3.86078 0.0305307C3.90448 0.0104155 3.95203 0 4.00014 0C4.04825 0 4.09579 0.0104155 4.1395 0.0305307C4.18321 0.050646 4.22204 0.0799843 4.25333 0.11653C5.1325 1.14514 8 4.70125 8 7.33542Z"
-                    fill="#F5F5F5"
-                />
-                <path d="M6.23829 7.68823C6.23829 8.21906 6.02742 8.72814 5.65207 9.10349C5.27672 9.47883 4.76764 9.6897 4.23682 9.6897" fill="#F5F5F5" />
-                <path d="M6.23829 7.68823C6.23829 8.21906 6.02742 8.72814 5.65207 9.10349C5.27672 9.47883 4.76764 9.6897 4.23682 9.6897" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            Drops
-        </h3>
+        <a href="/community-drops/{{ message.task.id }}" class="close-button btn-close-community">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
+            <title>close</title>
+            <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/>
+          </svg>
+        </a>
+       </div>
 
-        <section>
-            <h1>Je hebt zojuist een mooie stap volbracht.</h1>
-            <p>Wil je anderen steunen door je gevoelens over deze oefening te delen?</p>
-        </section>
+      <h3>Toegevoegd aan<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 7.33542C8 9.79014 6.45472 11.3354 4 11.3354C1.54528 11.3354 0 9.79014 0 7.33542C0 4.70125 2.8675 1.14514 3.74694 0.11653C3.77824 0.0799843 3.81707 0.050646 3.86078 0.0305307C3.90448 0.0104155 3.95203 0 4.00014 0C4.04825 0 4.09579 0.0104155 4.1395 0.0305307C4.18321 0.050646 4.22204 0.0799843 4.25333 0.11653C5.1325 1.14514 8 4.70125 8 7.33542Z" fill="#F5F5F5"/>
+        <path d="M6.23829 7.68823C6.23829 8.21906 6.02742 8.72814 5.65207 9.10349C5.27672 9.47883 4.76764 9.6897 4.23682 9.6897" fill="#F5F5F5"/>
+        <path d="M6.23829 7.68823C6.23829 8.21906 6.02742 8.72814 5.65207 9.10349C5.27672 9.47883 4.76764 9.6897 4.23682 9.6897" stroke="#111111" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>Drops
+      </h3>
 
-        <form method="POST" action="/messages/{{ message.id }}">
-            <input type="hidden" name="exercise" value="{{ message.id }}" />
+      <section>
+        <h1>Je hebt zojuist een mooie stap volbracht.</h1>
+        <p>Wil je anderen steunen door je gevoelens over deze oefening te delen?</p>
+      </section>
 
-            <article id="nameField">
-                <label>Naam</label>
-                <input type="text" name="from" id="fromInput" placeholder="name" required />
-            </article>
+      <form method="POST" action="/messages/{{ message.id }}">
+        <input type="hidden" name="exercise" value="{{ message.id }}">
+        
+        <article id="nameField">
+          <label>Naam</label>
+          <input type="text" name="from" id="fromInput" placeholder="name" required>
+        </article>
 
-            <textarea name="text" id="dropTextarea" placeholder="Laat een community drop achter en verspreid kracht." required></textarea>
+        <textarea name="text" id="dropTextarea" placeholder="Laat een community drop achter en verspreid kracht." required></textarea>
+        
+        <label>
+          <input type="checkbox" id="anonymousCheck"> Bericht anoniem plaatsen
+        </label>
+        <article class="inline">
+          <a class="them-{{ message.task.id }} start-btn-black btn-standard" href="/messages/{{ message.id }}">Misschien later</a><br>
+          <button class="them-{{ message.task.id }} btn-standard" type="submit">Ervaring Delen</button>
+        </article>
 
-            <label> <input type="checkbox" id="anonymousCheck" /> Bericht anoniem plaatsen </label>
-            <article class="inline">
-                <a class="them-{{ message.task.id }} start-btn-black btn-standard" href="/messages/{{ message.id }}">Misschien later</a><br />
-                <button class="them-{{ message.task.id }} btn-standard" type="submit">Ervaring Delen</button>
-            </article>
-        </form>
-        {% endfor %}
-    </section>
+      </form>
+  {% endfor %}
+  </section>
+
+  
 </main>
+
+
+
 
 {% render 'partials/foot.liquid' %}
